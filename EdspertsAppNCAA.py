@@ -1191,9 +1191,9 @@ def main():
 
 
         # load the model from disk
-        #regressor = pickle.load(open(filename, 'rb'))
-        #y_pred = regressor.predict(Xdata)
-        y_pred=142
+        regressor = pickle.load(open(filename, 'rb'))
+        y_pred = regressor.predict(Xdata)[0]
+        #y_pred=142
 
 
         st.header('{} Stats >> Offensive Consistency : {}   Defensive Consistency : {} '.format(optionHome,round(constoff,2),round(constdef,2)))
