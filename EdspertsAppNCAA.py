@@ -1057,7 +1057,8 @@ def main():
      'Youngstown State'),key='AwayBox')
       
     if st.button('Click to Submit'):
-        schoollist1=[optionHome,optionAway].sort()
+        schoollist1=[optionHome,optionAway]
+        schoollist1=schoollist1.sort()
         schoollist=[]
         for x in schoollist1:
             x= x.replace('&','').replace('(','').replace(')','')
