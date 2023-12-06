@@ -1057,7 +1057,7 @@ def main():
      'Youngstown State'),key='AwayBox')
       
     if st.button('Click to Submit'):
-        schoollist1=[optionHome,optionAway]
+        schoollist1=[optionHome,optionAway].sort()
         schoollist=[]
         for x in schoollist1:
             x= x.replace('&','').replace('(','').replace(')','')
@@ -1150,7 +1150,7 @@ def main():
                    'eFG%_off', 'TOV%_off', 'ORB%_off', 'FT/FGA_off', 'eFG%_def',
                    'TOV%_def', 'DRB%_def', 'FT/FGA_def']].iloc[len(temp['G'])-4:len(temp['G'])-1].astype(float).mean()).T
                 #avg1['Date'] = temp.iloc[len(temp['G'])-2].Date
-                #avg1['Team'] = temp.matches.iloc[0]
+                avg1['Team'] = temp.matches.iloc[0]
                 avg1['consitencyscoreoff'] = ((1-abs((temp[['Tm']].iloc[len(temp['G'])-4:len(temp['G'])-1]-avg1['Tm'].iloc[0]) / avg1['Tm'].iloc[0]) ).mean() * 100)[0]
                 avg1['consitencyscoredef'] = ((1-abs((temp[['Oppscore']].astype(float).iloc[len(temp['G'])-4:len(temp['G'])-1]-avg1['Oppscore'].astype(float).iloc[0]) / avg1['Oppscore'].astype(float).iloc[0]) ).mean() * 100)[0]
         
@@ -1165,7 +1165,8 @@ def main():
                 df3=pd.concat([df3,avg1])
                 df3['index']='0'
     
-        st.header('_'.join(list(temp['Team'].unique())))
+        #st.header('_'.join(list(temp['Team'].unique())))
+        st.header('Team Metrics')
         st.dataframe(df3) 
         data_t=pd.merge(df3.iloc[[0]],df3.iloc[[1]],left_on=['index'],right_on=['index'],
                   suffixes=('','Opp_metrics'))
@@ -1204,7 +1205,7 @@ def main():
        
         st.markdown("***")
         
-        st.header('{} Total Points'.format(round(y_pred,0)))
+        st.header('{} Total Points'.format(round(y_pred+7,0)))
     # Add your Streamlit app code here
 
 if __name__ == "__main__":
