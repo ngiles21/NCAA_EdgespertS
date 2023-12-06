@@ -1151,7 +1151,7 @@ def main():
                    'eFG%_off', 'TOV%_off', 'ORB%_off', 'FT/FGA_off', 'eFG%_def',
                    'TOV%_def', 'DRB%_def', 'FT/FGA_def']].iloc[len(temp['G'])-4:len(temp['G'])-1].astype(float).mean()).T
                 #avg1['Date'] = temp.iloc[len(temp['G'])-2].Date
-                avg1['Team'] = temp.matches.iloc[0]
+                avg1['Team'] = team
                 avg1['consitencyscoreoff'] = ((1-abs((temp[['Tm']].iloc[len(temp['G'])-4:len(temp['G'])-1]-avg1['Tm'].iloc[0]) / avg1['Tm'].iloc[0]) ).mean() * 100)[0]
                 avg1['consitencyscoredef'] = ((1-abs((temp[['Oppscore']].astype(float).iloc[len(temp['G'])-4:len(temp['G'])-1]-avg1['Oppscore'].astype(float).iloc[0]) / avg1['Oppscore'].astype(float).iloc[0]) ).mean() * 100)[0]
         
