@@ -1206,7 +1206,7 @@ def main():
        
         st.markdown("***")
         
-        st.header('{} Total Points'.format(round(y_pred+7,0)))
+        st.header('{} Total Points'.format(round(y_pred,0)))
     # Add your Streamlit app code here
 
 if __name__ == "__main__":
